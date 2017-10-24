@@ -96,6 +96,7 @@ namespace Application.TorreHanoi.Implementation
         public ObterImagemProcessoPorResponse ObterImagemProcessoPor(string id)
         {
             var response = id.ValidationImagem();
+            var image = id;
 
             if (!response.IsValid)
             {
@@ -103,7 +104,7 @@ namespace Application.TorreHanoi.Implementation
             }
             try
             {
-                var torre = _domainService.ObterPor(new Guid());
+                var torre = _domainService.ObterPor(new Guid(image));
 
                 _designerService.Inicializar(_adpterTorreHanoi.DomainParaDesignerDto(torre));
 
